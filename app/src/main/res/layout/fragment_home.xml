@@ -46,6 +46,7 @@
         >
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/idCuciKrg"
             android:layout_width="170dp"
             android:layout_height="70dp"
             app:cardCornerRadius="12dp"
@@ -67,7 +68,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EXPRESS"
+                    android:text="CUCI KERING"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"/>
@@ -75,6 +76,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/idCuciBsh"
             android:layout_width="170dp"
             android:layout_height="70dp"
             app:cardCornerRadius="12dp"
@@ -97,7 +99,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EXPRESS"
+                    android:text="CUCI BASAH"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"/>
@@ -105,6 +107,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/idCuciStr"
             android:layout_width="170dp"
             android:layout_height="70dp"
             app:cardCornerRadius="12dp"
@@ -127,7 +130,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EXPRESS"
+                    android:text="CUCI SETRIKA"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"/>
@@ -136,6 +139,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/idCM"
             android:layout_width="170dp"
             android:layout_height="70dp"
             app:cardCornerRadius="12dp"
@@ -157,7 +161,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EXPRESS"
+                    android:text="COMING SOON"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"/>
