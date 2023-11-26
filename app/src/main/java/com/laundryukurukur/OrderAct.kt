@@ -18,16 +18,10 @@ class OrderAct : AppCompatActivity() {
         setUpListener()
     }
     fun setUpListener() {
-//        binding.btnSave.setOnClickListener(){
-//            CoroutineScope(Dispatchers.IO).launch {
-//                OrderApp(requireActivity()).getOrderDao().addOrder(
-//                    Order(0, binding.name.text.toString(), binding.phone.text.toString())
-//                )
-//            }
-//        }
         val btn = findViewById<Button>(R.id.btnSave)
         val nameField = findViewById<EditText>(R.id.edit_name)
         val phoneField = findViewById<EditText>(R.id.edit_phone)
+
         btn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 OrderApp(this@OrderAct).getOrderDao().addOrder(
