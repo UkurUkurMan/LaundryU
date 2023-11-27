@@ -56,10 +56,10 @@ class home : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
-        val btn : CardView = view.findViewById(R.id.idCuciKrg)
-        btn.setOnClickListener{
-            val intent = Intent(activity, OrderAct::class.java)
-            activity?.startActivity(intent)
+        val CardView : CardView = view.findViewById(R.id.idCuciKrg)
+        CardView.setOnClickListener{
+            val Myintent = Intent(activity, OrderAct::class.java)
+            activity?.startActivity(Myintent)
         }
 
         return view

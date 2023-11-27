@@ -29,6 +29,9 @@
             android:name=".MainActivity"
             android:exported="false">
         </activity>
+        <activity android:name=".OrderAct"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
