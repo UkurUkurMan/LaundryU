@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -16,9 +17,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
 class login : AppCompatActivity() {
+    lateinit var textRegist : TextView
     lateinit var editemail: EditText
     lateinit var editpassword: EditText
-    lateinit var btnRegister: Button
     lateinit var btnLogin: Button
     lateinit var btnGoogle : Button
     lateinit var progressDialog : ProgressDialog
@@ -37,15 +38,18 @@ class login : AppCompatActivity() {
         Thread.sleep(3000)
         installSplashScreen()
         setContentView(R.layout.activity_login)
+        textRegist = findViewById(R.id.textdaftar)
         editemail = findViewById(R.id.input_email)
         editpassword = findViewById(R.id.input_password)
-        btnRegister = findViewById(R.id.btn_register)
         btnLogin = findViewById(R.id.btn_login)
         btnGoogle = findViewById(R.id.btn_google)
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Logging")
         progressDialog.setMessage("Silahkan Tunggu...")
-
+        textRegist.setOnClickListener{
+            startActivity(Intent(this, register::class.java))
+            finish()
+        }
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -61,10 +65,6 @@ class login : AppCompatActivity() {
         btnGoogle.setOnClickListener{
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
-        }
-        btnRegister.setOnClickListener {
-            startActivity(Intent(this, register::class.java))
-            finish()
         }
     }
     private fun prosesLogin(){
