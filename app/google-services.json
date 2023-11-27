@@ -12,7 +12,20 @@
           "package_name": "com.laundryukurukur"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "835749335637-fk6skikavfcgtudh74ps4m1hopfjl86u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.laundryukurukur",
+            "certificate_hash": "2051652ee3af5a37c03c1d897cda03502dfb4d7c"
+          }
+        },
+        {
+          "client_id": "835749335637-t6vt63144i79d0qp6eamneuonm8bd1lc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCxDbD4S8PgUyBkRU1IDJCPmcqEYSsf4_4"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835749335637-t6vt63144i79d0qp6eamneuonm8bd1lc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

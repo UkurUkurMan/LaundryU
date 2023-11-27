@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("C:\\MyKeystoreLaundryU\\keystore.jks")
+            storePassword = "aff1nhsr"
+            keyAlias = "keylaundryu"
+            keyPassword = "aff1nhsr"
+        }
+    }
     namespace = "com.laundryukurukur"
     compileSdk = 33
 
@@ -16,6 +24,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("debug")
     }
 
     buildTypes {
@@ -26,6 +35,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
     }
     buildFeatures{
         viewBinding = true
@@ -53,4 +65,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
+    implementation("com.google.android.gms:play-services-auth:20.4.1")
+    implementation("com.google.firebase:firebase-auth:20.4.1")
+//    implementation("com.google.gms:google-services:4.4.0")
 }
