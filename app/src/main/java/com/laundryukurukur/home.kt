@@ -2,10 +2,13 @@ package com.laundryukurukur
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import com.laundryukurukur.databinding.ActivityMainBinding
 import com.laundryukurukur.databinding.FragmentHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,30 +29,40 @@ class home : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = FragmentHomeBinding.inflate(layoutInflater)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        pilihPaket()
+
+//        pilihPaket()
     }
 
-    val cuciKrg = binding.idCuciKrg
-    val cuciBsh = binding.idCuciBsh
-    val cuciStr = binding.idCuciStr
 
-    fun pilihPaket() {
-        cuciKrg.setOnClickListener {
-            val intent = Intent(activity, OrderAct::class.java)
-            activity?.startActivity(intent)
-        }
-    }
+//    val cuciBsh = binding.idCuciBsh
+//    val cuciStr = binding.idCuciStr
+
+//    fun pilihPaket() {
+//val cuciKrg = binding.idCuciKrg
+////        cuciKrg.setOnClickListener {
+////            val intent = Intent(activity, OrderAct::class.java)
+////            activity?.startActivity(intent)
+////            startActivity(Intent(this, OrderAct::class.java))
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
+        val btn : CardView = view.findViewById(R.id.idCuciKrg)
+        btn.setOnClickListener{
+            val intent = Intent(activity, OrderAct::class.java)
+            activity?.startActivity(intent)
+        }
+
+        return view
     }
 
     companion object {

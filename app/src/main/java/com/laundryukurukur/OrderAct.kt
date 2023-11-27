@@ -6,19 +6,22 @@ import android.widget.Button
 import android.widget.EditText
 import com.laundryukurukur.database.Order
 import com.laundryukurukur.database.OrderApp
+import com.laundryukurukur.databinding.ActivityMainBinding
+import com.laundryukurukur.databinding.ActivityOrderBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class OrderAct : AppCompatActivity() {
-
+    private lateinit var binding: ActivityOrderBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order)
+        binding = ActivityOrderBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setUpListener()
     }
     fun setUpListener() {
-        val btn = findViewById<Button>(R.id.btnSave)
+        val btn: Button = findViewById(R.id.btnSave)
         val nameField = findViewById<EditText>(R.id.edit_name)
         val phoneField = findViewById<EditText>(R.id.edit_phone)
 
