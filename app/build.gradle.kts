@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -56,4 +57,9 @@ dependencies {
     kapt("android.arch.persistence.room:compiler:1.1.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
+    implementation("com.google.android.gms:play-services-auth:20.4.1")
+    implementation("com.google.firebase:firebase-auth:20.4.1")
 }
