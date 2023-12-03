@@ -2,4 +2,5 @@
     <string name="app_name">LaundryU</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_web_client_id" translatable="false">835749335637-t6vt63144i79d0qp6eamneuonm8bd1lc.apps.googleusercontent.com</string>
 </resources>
