@@ -4,6 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bar">#a0a0a0</color>
     <color name="primarycolor">#00A9FF</color>
-    <color name="background">#FFFFFFFF</color>
-    
+    <color name="primary">#6A7CFF</color>
+    <color name="background">#F7F7FA</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="primary_text">#565B65</color>
+    <color name="secondary_text">#9B9A9D</color>
+    <color name="db_item1">#2CC2EA</color>
+    <color name="db_item2">#4DE9C9</color>
 </resources>
