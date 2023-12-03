@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
             android:fontFamily="@font/poppinssemibold"
-            android:text="Masukan Nama "
+            android:text="Masukkan Nama "
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppinssemibold"
-            android:text="Masukan Email "
+            android:text="Masukkan Email "
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppinssemibold"
-            android:text="Masukan Password "
+            android:text="Masukkan Password "
             android:textColor="@color/black"
             android:textSize="12sp" />
 

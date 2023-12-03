@@ -62,4 +62,5 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
     implementation("com.google.android.gms:play-services-auth:20.4.1")
     implementation("com.google.firebase:firebase-auth:20.4.1")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }
