@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bar">#a0a0a0</color>
     <color name="primarycolor">#00A9FF</color>
+    <color name="background">#FFFFFFFF</color>
+    
 </resources>
