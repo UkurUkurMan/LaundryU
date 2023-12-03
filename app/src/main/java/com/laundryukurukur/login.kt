@@ -17,13 +17,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
 class login : AppCompatActivity() {
-    lateinit var textRegist : TextView
     lateinit var editemail: EditText
     lateinit var editpassword: EditText
+//    lateinit var btnRegister: Button
     lateinit var btnLogin: Button
     lateinit var btnGoogle : Button
     lateinit var progressDialog : ProgressDialog
     lateinit var googleSignInClient: GoogleSignInClient
+    lateinit var textRegister: TextView
     var firebaseAuth = FirebaseAuth.getInstance()
     companion object{
         private const val RC_SIGN_IN = 1001
@@ -38,23 +39,27 @@ class login : AppCompatActivity() {
         Thread.sleep(3000)
         installSplashScreen()
         setContentView(R.layout.activity_login)
-        textRegist = findViewById(R.id.textdaftar)
         editemail = findViewById(R.id.input_email)
         editpassword = findViewById(R.id.input_password)
+//        btnRegister = findViewById(R.id.btn_register)
         btnLogin = findViewById(R.id.btn_login)
         btnGoogle = findViewById(R.id.btn_google)
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Logging")
         progressDialog.setMessage("Silahkan Tunggu...")
-        textRegist.setOnClickListener{
-            startActivity(Intent(this, register::class.java))
-            finish()
-        }
+        textRegister = findViewById(R.id.txt_register)
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        textRegister.setOnClickListener {
+            startActivity(Intent(this, register::class.java))
+            finish()
+        }
+
         btnLogin.setOnClickListener {
             if(editemail.text.isNotEmpty() && editpassword.text.isNotEmpty()){
                 prosesLogin()
@@ -66,6 +71,7 @@ class login : AppCompatActivity() {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
+
     }
     private fun prosesLogin(){
         val email = editemail.text.toString()

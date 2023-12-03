@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.userProfileChangeRequest
+
 
 class register : AppCompatActivity() {
     lateinit var editfullname: EditText
@@ -16,8 +18,11 @@ class register : AppCompatActivity() {
     lateinit var editpassword: EditText
     lateinit var editpasswordconf: EditText
     lateinit var btnRegister: Button
-    lateinit var btnLogin: Button
     lateinit var progressDialog : ProgressDialog
+    lateinit var textLogin: TextView
+
+
+
     var firebaseAuth = FirebaseAuth.getInstance()
     override fun onStart() {
         super.onStart()
@@ -33,14 +38,20 @@ class register : AppCompatActivity() {
         editpassword = findViewById(R.id.input_password_regist)
         editpasswordconf = findViewById(R.id.input_password_konfirm)
         btnRegister = findViewById(R.id.button_register)
-        btnLogin = findViewById(R.id.btn_login_regist)
+
+        textLogin = findViewById(R.id.txt_login)
+
+
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Logging")
         progressDialog.setMessage("Silahkan Tunggu...")
-        btnLogin.setOnClickListener {
+
+
+        textLogin.setOnClickListener {
             startActivity(Intent(this, login::class.java))
             finish()
         }
+
         btnRegister.setOnClickListener {
             if (editfullname.text.isNotEmpty() && editemail.text.isNotEmpty() && editpassword.text.isNotEmpty()) {
                 if (editpassword.text.toString() == editpasswordconf.text.toString()) {
@@ -54,6 +65,7 @@ class register : AppCompatActivity() {
             }
         }
     }
+
 
     private fun processRegist() {
         val fullname = editfullname.text.toString()
