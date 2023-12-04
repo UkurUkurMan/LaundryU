@@ -11,5 +11,7 @@ data class Order(
     @ColumnInfo
     var name: String = "",
     @ColumnInfo
+    var paket: String = "",
+    @ColumnInfo
     var phone: String = ""
 )

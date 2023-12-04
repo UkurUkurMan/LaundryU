@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.cardview.widget.CardView
+import com.google.firebase.auth.FirebaseAuth
 import com.laundryukurukur.databinding.ActivityMainBinding
 import com.laundryukurukur.databinding.FragmentHomeBinding
 
@@ -26,6 +28,7 @@ class home : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding : FragmentHomeBinding
+    val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,31 +37,54 @@ class home : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-//        pilihPaket()
     }
 
-
-//    val cuciBsh = binding.idCuciBsh
-//    val cuciStr = binding.idCuciStr
-
-//    fun pilihPaket() {
-//val cuciKrg = binding.idCuciKrg
-////        cuciKrg.setOnClickListener {
-////            val intent = Intent(activity, OrderAct::class.java)
-////            activity?.startActivity(intent)
-////            startActivity(Intent(this, OrderAct::class.java))
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val user = firebaseAuth.currentUser
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
-        val CardView : CardView = view.findViewById(R.id.idCuciKrg)
-        CardView.setOnClickListener{
-            val Myintent = Intent(activity, OrderAct::class.java)
+        var nama : TextView = view.findViewById(R.id.welcome)
+        val cuciKering : CardView = view.findViewById(R.id.idCuciKrg)
+        if(user!=null){
+            nama.text = user.displayName
+        }
+        cuciKering.setOnClickListener{
+            val paket = "Cuci Kering"
+            val bundle = Bundle().apply {
+                putString("paket",paket)
+            }
+            val Myintent = Intent(activity, OrderAct::class.java).apply { putExtras(bundle) }
+            activity?.startActivity(Myintent)
+        }
+        val cuciBasah : CardView = view.findViewById(R.id.idCuciBsh)
+        cuciBasah.setOnClickListener {
+            val paket = "Cuci Basah"
+            val bundle = Bundle().apply {
+                putString("paket",paket)
+            }
+            val Myintent = Intent(activity, OrderAct::class.java).apply { putExtras(bundle) }
+            activity?.startActivity(Myintent)
+        }
+        val cuciSetrika : CardView = view.findViewById(R.id.idCuciStr)
+        cuciSetrika.setOnClickListener {
+            val paket = "Cuci Setrika"
+            val bundle = Bundle().apply {
+                putString("paket",paket)
+            }
+            val Myintent = Intent(activity, OrderAct::class.java).apply { putExtras(bundle) }
+            activity?.startActivity(Myintent)
+        }
+        val onlyGosok : CardView = view.findViewById(R.id.idSetrikaSaja)
+        onlyGosok.setOnClickListener{
+            val paket = "Setrika Saja"
+            val bundle = Bundle().apply {
+                putString("paket",paket)
+            }
+            val Myintent = Intent(activity, OrderAct::class.java).apply { putExtras(bundle) }
             activity?.startActivity(Myintent)
         }
 

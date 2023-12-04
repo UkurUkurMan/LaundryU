@@ -1,5 +1,6 @@
 package com.laundryukurukur
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -18,9 +19,13 @@ class OrderAct : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setUpListener()
     }
     fun setUpListener() {
+        val bundle: Bundle? = intent.extras
+        val paket = bundle?.getString("paket")
+
         val btn: Button = findViewById(R.id.btnSave)
         val nameField = findViewById<EditText>(R.id.edit_name)
         val phoneField = findViewById<EditText>(R.id.edit_phone)
@@ -28,7 +33,7 @@ class OrderAct : AppCompatActivity() {
         btn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 OrderApp(this@OrderAct).getOrderDao().addOrder(
-                    Order (0, nameField.text.toString(), phoneField.text.toString())
+                    Order (0, nameField.text.toString(),paket.toString(),phoneField.text.toString())
                 )
             }
         }
