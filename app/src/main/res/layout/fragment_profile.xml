@@ -45,30 +45,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Username"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/poppinsmedium">
         </TextView>
-        <ImageView
-            android:id="@+id/line"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="20dp"
+            android:layout_height="45dp"
+            android:id="@+id/p_user"
+            android:text=""
             android:background="#9B9A9D"
-        />
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:fontFamily="@font/poppinsmedium">
+        </TextView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/poppinsmedium">
         </TextView>
 
-        <ImageView
-            android:id="@+id/line2"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="20dp"
+            android:layout_height="45dp"
+            android:id="@+id/p_email"
+            android:text=""
             android:background="#9B9A9D"
-            />
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:fontFamily="@font/poppinsmedium">
+        </TextView>
     </LinearLayout>
-
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/logout"
+        android:layout_margin="15dp"
+        android:layout_alignParentRight="true"
+        android:clickable="true">
+    </ImageView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="about us"
+        android:paddingBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+    </TextView>
 </RelativeLayout>
