@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -63,4 +65,5 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:20.4.1")
     implementation("com.google.firebase:firebase-auth:20.4.1")
     implementation("de.hdodenhof:circleimageview:3.1.0")
+
 }
