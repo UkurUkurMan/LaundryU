@@ -8,6 +8,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("C:\\MyKeystoreLaundryU\\keystore.jks")
+            storePassword = "aff1nhsr"
+            keyAlias = "keylaundryu"
+            keyPassword = "aff1nhsr"
+        }
+    }
     namespace = "com.laundryukurukur"
     compileSdk = 33
 
@@ -19,6 +27,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("debug")
     }
 
     buildTypes {

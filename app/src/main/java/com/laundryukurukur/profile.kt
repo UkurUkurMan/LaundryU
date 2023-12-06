@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.laundryukurukur.databinding.FragmentHomeBinding
+import com.laundryukurukur.databinding.FragmentProfileBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,6 +19,7 @@ class profile : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +33,19 @@ class profile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val user = firebaseAuth.currentUser
+        val Email = user?.email
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val view: View =  inflater.inflate(R.layout.fragment_profile, container, false)
+        var nama : TextView = view.findViewById(R.id.p_user)
+        if(user!=null){
+            nama.text = user.displayName
+        }
+        var email : TextView = view.findViewById(R.id.p_email)
+        if(user!=null){
+            email.text = Email
+        }
+        return view
     }
 
     companion object {
