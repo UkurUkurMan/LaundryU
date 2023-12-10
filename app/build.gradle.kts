@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    val nav_version = "2.5.3"
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -71,4 +72,9 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
     implementation("com.google.android.gms:play-services-auth:20.4.1")
     implementation("com.google.firebase:firebase-auth:20.4.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 }

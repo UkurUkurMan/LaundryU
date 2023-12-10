@@ -78,7 +78,6 @@
             app:cardCornerRadius="12dp"
             app:cardElevation="12dp"
             android:layout_gravity="center|end"
-
             app:cardBackgroundColor="@color/primary">
             >
             <LinearLayout
