@@ -11,5 +11,13 @@ data class Order(
     @ColumnInfo
     var name: String = "",
     @ColumnInfo
-    var phone: String = ""
+    var phone: String = "",
+    @ColumnInfo
+    var kategori: String = "",
+    @ColumnInfo
+    var paket: String = "",
+    @ColumnInfo
+    var kuantitas: String = "",
+    @ColumnInfo
+    var biaya: Int
 )
