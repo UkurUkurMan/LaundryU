@@ -31,6 +31,7 @@
                 android:gravity="right"
                 android:layout_gravity="center">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/minPkn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -43,16 +44,18 @@
                         android:layout_gravity="center"/>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/itemPkn"
+                    android:editable="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="2"
-
-                    android:layout_gravity="center"/>
+                    android:text="0"
+                    android:gravity="center"/>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/plusPkn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -87,6 +90,7 @@
                 android:gravity="right"
                 android:layout_gravity="center">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/minJas"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -99,15 +103,18 @@
                         android:layout_gravity="center"/>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/itemJas"
+                    android:editable="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="2"
-                    android:layout_gravity="center"/>
+                    android:text="0"
+                    android:gravity="center"/>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/plusJas"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -143,6 +150,7 @@
                 android:gravity="right"
                 android:layout_gravity="center">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/minSpt"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -155,15 +163,18 @@
                         android:layout_gravity="center"/>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/itemSpt"
+                    android:editable="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="2"
-                    android:layout_gravity="center"/>
+                    android:text="0"
+                    android:gravity="center"/>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/plusSpt"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -198,6 +209,7 @@
                 android:gravity="right"
                 android:layout_gravity="center">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/minKhusus"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -210,15 +222,18 @@
                         android:layout_gravity="center"/>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/itemKhusus"
+                    android:editable="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="2"
-                    android:layout_gravity="center"/>
+                    android:text="0"
+                    android:gravity="center"/>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/plusKhusus"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
