@@ -106,7 +106,7 @@
                 android:textColor="@color/white"/>
             <include
                 android:id="@+id/expandLinear2"
-                layout="@layout/card_expand"
+                layout="@layout/card_expand2"
                 android:visibility="gone"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -144,7 +144,7 @@
                 android:textColor="@color/white"/>
             <include
                 android:id="@+id/expandLinear3"
-                layout="@layout/card_expand"
+                layout="@layout/card_expand3"
                 android:visibility="gone"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
