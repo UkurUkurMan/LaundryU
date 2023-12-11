@@ -222,7 +222,7 @@ class OrderAct : AppCompatActivity() {
         val btn: Button = findViewById(R.id.btnSave)
         btn.setOnClickListener {
             countPrice()
-//            inputData()
+            inputData()
         }
     }
     fun countPrice() {
@@ -235,7 +235,7 @@ class OrderAct : AppCompatActivity() {
         val phoneField = findViewById<EditText>(R.id.edit_phone)
         CoroutineScope(Dispatchers.IO).launch {
             OrderApp(this@OrderAct).getOrderDao().addOrder(
-                Order (0, nameField.text.toString(), phoneField.text.toString(), paket, kuantitas, harga)
+                Order (0, nameField.text.toString(), phoneField.text.toString(), paket, kuantitas, biaya)
             )
         }
     }
