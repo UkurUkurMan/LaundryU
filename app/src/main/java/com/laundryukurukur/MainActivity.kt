@@ -2,7 +2,6 @@ package com.laundryukurukur
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.laundryukurukur.databinding.ActivityMainBinding
 

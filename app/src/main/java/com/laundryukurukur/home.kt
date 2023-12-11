@@ -2,13 +2,14 @@ package com.laundryukurukur
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import com.laundryukurukur.orderViewModel
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.laundryukurukur.databinding.ActivityMainBinding
 import com.laundryukurukur.databinding.FragmentHomeBinding
@@ -29,7 +30,9 @@ class home : Fragment() {
     private var param2: String? = null
     private lateinit var binding : FragmentHomeBinding
     val firebaseAuth = FirebaseAuth.getInstance()
-
+    private val viewModel: orderViewModel by lazy {
+        ViewModelProvider(this).get(orderViewModel::class.java)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentHomeBinding.inflate(layoutInflater)
@@ -58,6 +61,7 @@ class home : Fragment() {
                 putString("paket",paket)
             }
             val Myintent = Intent(activity, OrderAct::class.java).apply { putExtras(bundle) }
+            viewModel.setPaket("Cuci Kering")
             activity?.startActivity(Myintent)
         }
         val cuciBasah : CardView = view.findViewById(R.id.idCuciBsh)
@@ -87,7 +91,6 @@ class home : Fragment() {
             val Myintent = Intent(activity, OrderAct::class.java).apply { putExtras(bundle) }
             activity?.startActivity(Myintent)
         }
-
         return view
     }
 

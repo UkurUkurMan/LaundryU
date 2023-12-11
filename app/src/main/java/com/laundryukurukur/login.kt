@@ -86,6 +86,7 @@ class login : AppCompatActivity() {
             }
             .addOnCompleteListener{
                 progressDialog.dismiss()
+                finish()
             }
     }
 
