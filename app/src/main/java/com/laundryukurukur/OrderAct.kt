@@ -50,6 +50,8 @@ class OrderAct : AppCompatActivity() {
     var harga = 0
 
     var biaya = 0
+    var hargaPokok = 0
+    var kategori = ""
     var kuantitas = 0
     var paket: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +59,12 @@ class OrderAct : AppCompatActivity() {
         binding = ActivityOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpListener()
+
+        val bundle = intent.extras
+        if (bundle != null) {
+            hargaPokok = bundle.getInt("harga")
+            kategori = bundle.getString("kategori").toString()
+        }
 
         expandLinear1 = findViewById(R.id.expandLinear)
         expandLinear2 = findViewById(R.id.expandLinear2)
@@ -69,7 +77,7 @@ class OrderAct : AppCompatActivity() {
 
         expand1.setOnClickListener{
             paket = "Express"
-            harga = 8000
+            harga = 4000
             val v = if (expandLinear1.visibility == View.GONE) View.VISIBLE else View.GONE
             expandLinear1.visibility = v
             expandLinear2.visibility = View.GONE
@@ -79,7 +87,7 @@ class OrderAct : AppCompatActivity() {
         }
         expand2.setOnClickListener{
             paket = "Premiun"
-            harga = 6000
+            harga = 2000
             val v = if (expandLinear2.visibility == View.GONE) View.VISIBLE else View.GONE
             expandLinear2.visibility = v
             expandLinear1.visibility = View.GONE
@@ -89,7 +97,7 @@ class OrderAct : AppCompatActivity() {
         }
         expand3.setOnClickListener{
             paket = "Reguler"
-            harga = 5000
+            harga = 1000
             val v = if (expandLinear3.visibility == View.GONE) View.VISIBLE else View.GONE
             expandLinear3.visibility = v
             expandLinear2.visibility = View.GONE
@@ -128,34 +136,37 @@ class OrderAct : AppCompatActivity() {
             item2.setText(Integer.toString(jas))
             print("Min Clicked")
         }
-        plus3.setOnClickListener {
-            sepatu += 1
-            item3.setText(Integer.toString(sepatu))
-            print("Plus Clicked")
-        }
-        min3.setOnClickListener {
-            if (sepatu == 0) {
-                sepatu = 0
-            } else {
-                sepatu -= 1
+        if(kategori != "Setrika Saja"){
+            plus3.setOnClickListener {
+                sepatu += 1
+                item3.setText(Integer.toString(sepatu))
+                print("Plus Clicked")
             }
-            item3.setText(Integer.toString(sepatu))
-            print("Min Clicked")
-        }
-        plus4.setOnClickListener {
-            khusus += 1
-            item4.setText(Integer.toString(khusus))
-            print("Plus Clicked")
-        }
-        min4.setOnClickListener {
-            if (khusus == 0) {
-                khusus = 0
-            } else {
-                khusus -= 1
+            min3.setOnClickListener {
+                if (sepatu == 0) {
+                    sepatu = 0
+                } else {
+                    sepatu -= 1
+                }
+                item3.setText(Integer.toString(sepatu))
+                print("Min Clicked")
             }
-            item4.setText(Integer.toString(khusus))
-            print("Min Clicked")
+            plus4.setOnClickListener {
+                khusus += 1
+                item4.setText(Integer.toString(khusus))
+                print("Plus Clicked")
+            }
+            min4.setOnClickListener {
+                if (khusus == 0) {
+                    khusus = 0
+                } else {
+                    khusus -= 1
+                }
+                item4.setText(Integer.toString(khusus))
+                print("Min Clicked")
+            }
         }
+
     }
 
     fun setItem() {
@@ -226,16 +237,20 @@ class OrderAct : AppCompatActivity() {
         }
     }
     fun countPrice() {
-        kuantitas = (pakaian + jas + sepatu + khusus)
-        biaya = (pakaian + jas + sepatu + khusus) * harga
-        println(biaya)
+        if (kategori == "Setrika Saja") {
+            kuantitas = (pakaian + jas)
+            biaya = (pakaian + jas) * (harga + hargaPokok)
+        } else {
+            kuantitas = (pakaian + jas + sepatu + khusus)
+            biaya = (pakaian + jas + sepatu + khusus) * (harga + hargaPokok)
+        }
     }
     fun inputData(){
         val nameField = findViewById<EditText>(R.id.edit_name)
         val phoneField = findViewById<EditText>(R.id.edit_phone)
         CoroutineScope(Dispatchers.IO).launch {
             OrderApp(this@OrderAct).getOrderDao().addOrder(
-                Order (0, nameField.text.toString(), phoneField.text.toString(), paket, kuantitas, biaya)
+                Order (0, nameField.text.toString(), phoneField.text.toString(), kategori, paket, kuantitas, biaya)
             )
         }
     }

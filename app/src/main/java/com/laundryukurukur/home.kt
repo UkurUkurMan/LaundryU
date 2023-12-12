@@ -1,6 +1,7 @@
 package com.laundryukurukur
 
 import android.content.Intent
+import androidx.room.*
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,8 +9,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.laundryukurukur.adapter.ProsesAdapter
+import com.laundryukurukur.database.OrderApp
+import com.laundryukurukur.database.OrderDao
 import com.laundryukurukur.databinding.ActivityMainBinding
 import com.laundryukurukur.databinding.FragmentHomeBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +38,13 @@ class home : Fragment() {
     private var param2: String? = null
     private lateinit var binding : FragmentHomeBinding
 
+    private lateinit var prosesAdapter: ProsesAdapter
+    val list_proses: RecyclerView? = view?.findViewById(R.id.list_Proses)
+    private lateinit var dao: OrderDao
+
+    var harga = 0
+    var title = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentHomeBinding.inflate(layoutInflater)
@@ -34,21 +52,30 @@ class home : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        dao = OrderApp.invoke(requireContext()).getOrderDao()
+        setRecycler()
 
-//        pilihPaket()
     }
 
+    override fun onStart() {
+        super.onStart()
+        CoroutineScope(Dispatchers.IO).launch {
+            val proses = dao.getAllOrder()
+            Log.d("home", "dbResponse: $proses")
+            withContext(Dispatchers.Main) {
+                prosesAdapter.setData(proses)
+            }
+        }
+    }
 
-//    val cuciBsh = binding.idCuciBsh
-//    val cuciStr = binding.idCuciStr
+    private fun setRecycler(){
+        prosesAdapter = ProsesAdapter(arrayListOf())
+        list_proses?.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = prosesAdapter
+        }
+    }
 
-//    fun pilihPaket() {
-//val cuciKrg = binding.idCuciKrg
-////        cuciKrg.setOnClickListener {
-////            val intent = Intent(activity, OrderAct::class.java)
-////            activity?.startActivity(intent)
-////            startActivity(Intent(this, OrderAct::class.java))
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,14 +83,52 @@ class home : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
-        val btn : CardView = view.findViewById(R.id.idCuciKrg)
-        btn.setOnClickListener{
+
+        val btn1 : CardView = view.findViewById(R.id.idCuciKrg)
+        val btn2 : CardView = view.findViewById(R.id.idCuciBsh)
+        val btn3 : CardView = view.findViewById(R.id.idCuciStr)
+        val btn4 : CardView = view.findViewById(R.id.idSetrika)
+
+        val bundle = Bundle()
+        btn1.setOnClickListener{
+            harga = 3000
+            title = "Cuci Kering"
+            bundle.putInt("harga", harga)
+            bundle.putString("kategori", title)
             val intent = Intent(activity, OrderAct::class.java)
+            intent.putExtras(bundle)
             activity?.startActivity(intent)
         }
-
+        btn2.setOnClickListener{
+            harga = 2000
+            title = "Cuci Basah"
+            bundle.putInt("harga", harga)
+            bundle.putString("kategori", title)
+            val intent = Intent(activity, OrderAct::class.java)
+            intent.putExtras(bundle)
+            activity?.startActivity(intent)
+        }
+        btn3.setOnClickListener{
+            harga = 4000
+            title = "Cuci Setrika"
+            bundle.putInt("harga", harga)
+            bundle.putString("kategori", title)
+            val intent = Intent(activity, OrderAct::class.java)
+            intent.putExtras(bundle)
+            activity?.startActivity(intent)
+        }
+        btn4.setOnClickListener{
+            harga = 1000
+            title = "Setrika Saja"
+            bundle.putInt("harga", harga)
+            bundle.putString("kategori", title)
+            val intent = Intent(activity, OrderAct::class.java)
+            intent.putExtras(bundle)
+            activity?.startActivity(intent)
+        }
         return view
     }
+
 
     companion object {
         /**
