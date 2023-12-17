@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonDashboard"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/kotakborder"
+        android:text="Kembali Ke Dashboard" />
+
+    <Button
+        android:id="@+id/buttonDashboard"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CardView"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/kotak"
+        android:text="Detail Transaksi" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView"
+        android:layout_width="399dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView">
+
+        <RelativeLayout
+            android:id="@+id/Relative2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:id="@+id/label1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/terimakasih"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="30dp"
+                android:text="Id  Transaksi :"
+                tools:layout_marginLeft="35dp"
+                tools:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/idTransaksi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/terimakasih"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/label1"
+                android:text="2233"
+                tools:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/label2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label1"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="5dp"
+                android:text="Tanggal : "
+                tools:layout_marginLeft="35dp"
+                tools:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/idTransaksi"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/label2"
+                android:text="09 November 2023"
+                tools:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Rp. 20.000"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/terimakasih"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Orderan Berhasil Dibuat"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:layout_below="@id/harga" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/centang"
+        tools:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -125,6 +125,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsregular"
                 android:hint="Password"
+                android:password="true"
                 android:inputType="textPersonName"
                 android:textSize="12sp" />
 
@@ -150,6 +151,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsregular"
                 android:textSize="12sp"
+                android:password="true"
                 android:inputType="textPersonName"
                 android:hint="Confirm Password"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -192,6 +194,5 @@
             android:textSize="12sp"
             android:textColor="@color/primarycolor"
             />
-
     </LinearLayout>
 </RelativeLayout>

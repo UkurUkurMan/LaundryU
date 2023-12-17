@@ -26,9 +26,9 @@ class register : AppCompatActivity() {
     var firebaseAuth = FirebaseAuth.getInstance()
     override fun onStart() {
         super.onStart()
-        if (firebaseAuth.currentUser != null)
-            startActivity(Intent(this, MainActivity::class.java))
-    }
+//        if (firebaseAuth.currentUser != null)
+//            startActivity(Intent(this, MainActivity::class.java))
+         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class register : AppCompatActivity() {
 
 
         progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Logging")
+        progressDialog.setTitle("Registering")
         progressDialog.setMessage("Silahkan Tunggu...")
 
 
@@ -74,7 +74,7 @@ class register : AppCompatActivity() {
         progressDialog.show()
         firebaseAuth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
+                  if (task.isSuccessful) {
                     val userUpdateProfile = userProfileChangeRequest {
                         displayName = fullname
                     }
@@ -82,7 +82,7 @@ class register : AppCompatActivity() {
                     user!!.updateProfile(userUpdateProfile)
                         .addOnCompleteListener {
                             progressDialog.dismiss()
-                            startActivity(Intent(this, MainActivity::class.java))
+                            startActivity(Intent(this, login::class.java))
                         }
                         .addOnFailureListener { error2 ->
                             Toast.makeText(this, error2.localizedMessage, Toast.LENGTH_SHORT).show()
