@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_DashBoard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardBawah"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/kotak"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Kembali Ke Dashboard"
+        android:textAlignment="center"
+        android:textSize="17sp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBawah"
+        android:layout_width="match_parent"
+        android:layout_height="378dp"
+        android:layout_below="@id/view"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        app:cardBackgroundColor="#A0E9FF"
+        app:cardCornerRadius="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/cardAtas"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/judul_nota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Detail Transaksi"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAtas"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:layout_below="@id/judul_nota"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="30dp"
+        app:cardBackgroundColor="#A0E9FF"
+        app:cardCornerRadius="15dp"
+        tools:layout_marginTop="35dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/deadlineKet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/serviceKet"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tanggalKet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/serviceKet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tanggalKet"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView8"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView6"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView3"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Deadline"
+                android:textColor="@color/black"
+                tools:fontFamily="@font/poppinsbold" />
+
+            <TextView
+                android:id="@+id/textTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Tanggal "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textTanggal"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Service"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

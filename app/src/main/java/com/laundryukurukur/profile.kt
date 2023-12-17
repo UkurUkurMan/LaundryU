@@ -1,5 +1,6 @@
 package com.laundryukurukur
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.laundryukurukur.databinding.FragmentHomeBinding
@@ -24,7 +26,7 @@ class profile : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     val firebaseAuth = FirebaseAuth.getInstance()
-
+    lateinit var progressDialog : ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,11 +39,13 @@ class profile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val user = firebaseAuth.currentUser
         val Email = user?.email
-        val logoutButton = view?.findViewById<Button>(R.id.button_logout)
-
+        progressDialog = ProgressDialog(requireContext())
+        progressDialog.setTitle("Logout")
+        progressDialog.setMessage("Silahkan Tunggu...")
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_profile, container, false)
         var nama : TextView = view.findViewById(R.id.p_user)
+        val logoutButton : ImageView = view.findViewById(R.id.button_logout)
         if(user!=null){
             nama.text = user.displayName
         }
@@ -50,26 +54,22 @@ class profile : Fragment() {
             email.text = Email
         }
 
-        logoutButton?.setOnClickListener {
-            val intent = Intent(requireContext(), login::class.java)
-            startActivity(intent)
-
-            requireActivity().supportFragmentManager.popBackStack()
+        logoutButton.setOnClickListener {
+            progressDialog.show()
+            firebaseAuth.signOut()
+            if (FirebaseAuth.getInstance().currentUser == null) {
+                progressDialog.dismiss()
+                val intent = Intent(requireContext(), login::class.java)
+                startActivity(intent)
+                requireActivity().supportFragmentManager.popBackStack()
+                activity?.finish()
+            }
         }
         return view
     }
 
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment profile.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             profile().apply {
