@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -89,6 +90,7 @@ class home : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
+        val textnama : TextView = view.findViewById(R.id.welcome)
         val btn1 : CardView = view.findViewById(R.id.idCuciKrg)
         val btn2 : CardView = view.findViewById(R.id.idCuciBsh)
         val btn3 : CardView = view.findViewById(R.id.idCuciStr)
