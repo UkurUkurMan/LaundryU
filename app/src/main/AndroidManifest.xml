@@ -15,6 +15,8 @@
         <activity
             android:name=".register"
             android:exported="false"/>
+            android:name=".adapter.ProsesAdapter"
+            android:exported="false"/>
         <activity
             android:name=".login"
             android:exported="true"
