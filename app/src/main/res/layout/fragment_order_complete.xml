@@ -7,16 +7,16 @@
     android:padding="10dp">
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/btnDashboard"
         android:layout_width="401dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonDashboard"
+        android:layout_below="@id/btnDetail"
         android:layout_marginTop="10dp"
         android:background="@drawable/kotakborder"
         android:text="Kembali Ke Dashboard" />
 
     <Button
-        android:id="@+id/buttonDashboard"
+        android:id="@+id/btnDetail"
         android:layout_width="401dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/CardView"
@@ -71,7 +71,7 @@
                 tools:textSize="20sp" />
 
             <TextView
-                android:id="@+id/textview"
+                android:id="@+id/textTanggalContain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/idTransaksi"
@@ -97,13 +97,13 @@
                 android:id="@+id/terimakasih"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/harga"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppinsbold"
                 android:text="Orderan Berhasil Dibuat"
                 android:textColor="@color/black"
-                android:textSize="24sp"
-                tools:layout_below="@id/harga" />
+                android:textSize="24sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -111,8 +111,8 @@
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:src="@drawable/centang"
-        tools:layout_centerHorizontal="true" />
+        android:src="@drawable/centang" />
 
 </RelativeLayout>

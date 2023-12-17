@@ -247,7 +247,7 @@ class OrderAct : AppCompatActivity() {
             val showDialog = AlertDialog.Builder(this)
             showDialog.setMessage("Order Success!")
             showDialog.setPositiveButton("OK") { dialog, id ->
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, NoteActivity::class.java)
                 startActivity(intent)
             }
             showDialog.show()

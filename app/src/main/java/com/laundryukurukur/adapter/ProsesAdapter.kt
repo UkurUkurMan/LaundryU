@@ -32,7 +32,7 @@ class ProsesAdapter (private val proses: ArrayList<Order>) : RecyclerView.Adapte
         holder.textName.text = onProses.name
         holder.textNo.text = onProses.phone
         holder.textPkt.text = onProses.paket
-        holder.textQnt.text = onProses.kuantitas.toString()
+        holder.textQnt.text = onProses.kuantitas.toString() + " KG"
     }
     fun setData(list: List<Order>) {
         proses.clear()

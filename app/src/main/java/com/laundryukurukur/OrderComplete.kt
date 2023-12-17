@@ -1,10 +1,17 @@
 package com.laundryukurukur
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.navigation.Navigation
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Date
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +40,16 @@ class OrderComplete : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view: View =  inflater.inflate(R.layout.fragment_order_complete, container, false)
+        val textTanggal : TextView
+        @SuppressLint("SimpleDateFormat")
+        val tanggal : DateFormat = SimpleDateFormat("EEEE, dd MMMM yyyy")
+        textTanggal = view.findViewById(R.id.textTanggalContain)
+        textTanggal.text = tanggal.format(Date())
+        val btnDashboard : Button = view.findViewById(R.id.btnDashboard)
+        btnDashboard.setOnClickListener { Navigation.findNavController(view).navigate(R.id.action_orderComplete_to_orderNote) }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order_complete, container, false)
+        return view
     }
 
     companion object {

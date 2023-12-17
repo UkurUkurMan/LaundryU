@@ -60,7 +60,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/cuci"
+                    android:src="@drawable/kering"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/cuci"
+                    android:src="@drawable/basah"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -122,7 +122,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/cuci"
+                    android:src="@drawable/cuci_setrika"
                     android:layout_marginLeft="10dp"/>
 
                 <TextView
@@ -155,7 +155,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/cuci"
+                    android:src="@drawable/setrika"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_width="match_parent"
