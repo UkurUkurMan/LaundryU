@@ -27,7 +27,7 @@ class login : AppCompatActivity() {
     lateinit var textRegister: TextView
     var firebaseAuth = FirebaseAuth.getInstance()
     companion object{
-        private const val RC_SIGN_IN = 1001
+        private const val RC_SIGN_IN = 1
     }
     override fun onStart() {
         super.onStart()
@@ -36,7 +36,7 @@ class login : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.sleep(3000)
+//        Thread.sleep(3000)
         installSplashScreen()
         setContentView(R.layout.activity_login)
         editemail = findViewById(R.id.input_email)
@@ -44,9 +44,6 @@ class login : AppCompatActivity() {
 //        btnRegister = findViewById(R.id.btn_register)
         btnLogin = findViewById(R.id.btn_login)
         btnGoogle = findViewById(R.id.btn_google)
-        progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Logging")
-        progressDialog.setMessage("Silahkan Tunggu...")
         textRegister = findViewById(R.id.txt_register)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -76,7 +73,8 @@ class login : AppCompatActivity() {
     private fun prosesLogin(){
         val email = editemail.text.toString()
         val password = editpassword.text.toString()
-        progressDialog.show()
+        val loading = loadingDialog(this)
+        loading.show()
         firebaseAuth.signInWithEmailAndPassword(email,password)
             .addOnSuccessListener {
                 startActivity(Intent(this,MainActivity::class.java))
@@ -86,14 +84,16 @@ class login : AppCompatActivity() {
                 Toast.makeText(this, "Email atau kata Sandi salah", Toast.LENGTH_SHORT).show()
             }
             .addOnCompleteListener{
-                progressDialog.dismiss()
+                loading.dismiss()
             }
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if(requestCode == RC_SIGN_IN){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try{
@@ -103,9 +103,11 @@ class login : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
+
     }
     private fun firebaseAuthWithGoogle(idtoken : String){
-        progressDialog.show()
+        val loading = loadingDialog(this)
+        loading.show()
         val credentian = GoogleAuthProvider.getCredential(idtoken, null)
         firebaseAuth.signInWithCredential(credentian)
             .addOnSuccessListener {
@@ -115,7 +117,7 @@ class login : AppCompatActivity() {
                 Toast.makeText(this, error.localizedMessage, Toast.LENGTH_SHORT).show()
             }
             .addOnCompleteListener{
-                progressDialog.dismiss()
+                loading.dismiss()
             }
     }
 }

@@ -42,10 +42,6 @@ class register : AppCompatActivity() {
         textLogin = findViewById(R.id.txt_login)
 
 
-        progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Registering")
-        progressDialog.setMessage("Silahkan Tunggu...")
-
 
         textLogin.setOnClickListener {
             startActivity(Intent(this, login::class.java))
@@ -71,7 +67,8 @@ class register : AppCompatActivity() {
         val fullname = editfullname.text.toString()
         val email = editemail.text.toString()
         val password = editpassword.text.toString()
-        progressDialog.show()
+        val loading = loadingDialog(this)
+        loading.show()
         firebaseAuth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener { task ->
                   if (task.isSuccessful) {
@@ -81,14 +78,14 @@ class register : AppCompatActivity() {
                     val user = task.result.user
                     user!!.updateProfile(userUpdateProfile)
                         .addOnCompleteListener {
-                            progressDialog.dismiss()
+                            loading.dismiss()
                             startActivity(Intent(this, login::class.java))
                         }
                         .addOnFailureListener { error2 ->
                             Toast.makeText(this, error2.localizedMessage, Toast.LENGTH_SHORT).show()
                         }
                 }else{
-                    progressDialog.dismiss()
+                    loading.dismiss()
                 }
             }
             .addOnFailureListener { error ->
