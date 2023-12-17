@@ -32,6 +32,9 @@
         <activity android:name=".OrderAct"
             android:exported="false">
         </activity>
+        <activity android:name=".register"
+            android:exported="false"
+            ></activity>
     </application>
 
 </manifest>

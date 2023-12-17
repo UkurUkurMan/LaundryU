@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.laundryukurukur.adapter.ProsesAdapter
 import com.laundryukurukur.database.OrderApp
 import com.laundryukurukur.database.OrderDao
@@ -42,7 +44,7 @@ class home : Fragment() {
     private lateinit var prosesAdapter: ProsesAdapter
     val list_proses: RecyclerView? = view?.findViewById(R.id.list_Proses)
     private lateinit var dao: OrderDao
-
+    val firebaseAuth = FirebaseAuth.getInstance()
     var harga = 0
     var title = ""
 
@@ -87,12 +89,15 @@ class home : Fragment() {
         // Inflate the layout for this fragment
         setRecycler()
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
-
+        val textnama : TextView = view.findViewById(R.id.welcome)
         val btn1 : CardView = view.findViewById(R.id.idCuciKrg)
         val btn2 : CardView = view.findViewById(R.id.idCuciBsh)
         val btn3 : CardView = view.findViewById(R.id.idCuciStr)
         val btn4 : CardView = view.findViewById(R.id.idSetrika)
-
+        val user = firebaseAuth.currentUser
+        if(user!=null){
+            textnama.text = "Welcome, " + user.displayName
+        }
         val bundle = Bundle()
         btn1.setOnClickListener{
             harga = 3000

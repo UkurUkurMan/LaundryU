@@ -80,13 +80,13 @@ class login : AppCompatActivity() {
         firebaseAuth.signInWithEmailAndPassword(email,password)
             .addOnSuccessListener {
                 startActivity(Intent(this,MainActivity::class.java))
+                finish()
             }
-            .addOnFailureListener{error ->
-                Toast.makeText(this, error.localizedMessage, Toast.LENGTH_SHORT).show()
+            .addOnFailureListener{
+                Toast.makeText(this, "Email atau kata Sandi salah", Toast.LENGTH_SHORT).show()
             }
             .addOnCompleteListener{
                 progressDialog.dismiss()
-                finish()
             }
     }
 
