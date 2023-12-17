@@ -1,6 +1,7 @@
 package com.laundryukurukur
 
 import android.animation.LayoutTransition
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.laundryukurukur.database.Order
@@ -230,11 +233,20 @@ class OrderAct : AppCompatActivity() {
         item4.setText(Integer.toString(0))
     }
     fun setUpListener() {
-        val btn: Button = findViewById(R.id.btnSave)
+        val btn: Button = findViewById(R.id.btnOrd)
         btn.setOnClickListener {
             countPrice()
             inputData()
+            val showDialog = AlertDialog.Builder(this)
+            showDialog.setMessage("Order Success!")
+            showDialog.setPositiveButton("OK") { dialog, id ->
+                Toast.makeText(this, "Saving Data", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            showDialog.show()
         }
+
     }
     fun countPrice() {
         if (kategori == "Setrika Saja") {

@@ -12,19 +12,19 @@ import com.laundryukurukur.databinding.AdapterBinding
 
 class ProsesAdapter (private val proses: ArrayList<Order>) : RecyclerView.Adapter<ProsesAdapter.ProsesViewHolder>() {
     class ProsesViewHolder(val view: View) :  RecyclerView.ViewHolder(view) {
-        val textview = view.findViewById<TextView>(R.id.textTitle)
+        val textview = view.findViewById<TextView>(R.id.textKtg)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProsesViewHolder {
-        return ProsesViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.adapter, parent, false)
-        )
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.card_view, parent, false)
+        return ProsesViewHolder(v)
     }
     override fun getItemCount() = proses.size
 
     override fun onBindViewHolder(holder: ProsesViewHolder, position: Int) {
         val onProses = proses[position]
         holder.textview.text = onProses.kategori
+        Log.d("HOLDER:", "Response: ${onProses.kategori}")
     }
     fun setData(list: List<Order>) {
         proses.clear()

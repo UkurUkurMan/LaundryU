@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
@@ -45,6 +46,7 @@ class home : Fragment() {
     var harga = 0
     var title = ""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentHomeBinding.inflate(layoutInflater)
@@ -66,12 +68,13 @@ class home : Fragment() {
                 prosesAdapter.setData(proses)
             }
         }
+        setRecycler()
     }
 
     private fun setRecycler(){
         prosesAdapter = ProsesAdapter(arrayListOf())
         list_proses?.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = LinearLayoutManager(requireActivity())
             adapter = prosesAdapter
         }
     }
@@ -82,6 +85,7 @@ class home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        setRecycler()
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
 
         val btn1 : CardView = view.findViewById(R.id.idCuciKrg)

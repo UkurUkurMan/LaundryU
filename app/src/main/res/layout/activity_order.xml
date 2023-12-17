@@ -153,10 +153,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnOrd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE"
+            android:text="CREATE ORDER"
             android:layout_gravity="bottom"
             android:layout_margin="15dp"
             />
