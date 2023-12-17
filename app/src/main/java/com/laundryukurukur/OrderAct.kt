@@ -4,6 +4,7 @@ import android.animation.LayoutTransition
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -12,16 +13,21 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.laundryukurukur.adapter.ProsesAdapter
 import com.laundryukurukur.database.Order
 import com.laundryukurukur.database.OrderApp
+import com.laundryukurukur.database.OrderDao
 import com.laundryukurukur.databinding.ActivityMainBinding
 import com.laundryukurukur.databinding.ActivityOrderBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class OrderAct : AppCompatActivity() {
+
     private lateinit var binding: ActivityOrderBinding
     private lateinit var expandLinear1: CardView
     private lateinit var expandLinear2: CardView
@@ -57,6 +63,7 @@ class OrderAct : AppCompatActivity() {
     var kategori = ""
     var kuantitas = 0
     var paket: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderBinding.inflate(layoutInflater)
@@ -240,7 +247,6 @@ class OrderAct : AppCompatActivity() {
             val showDialog = AlertDialog.Builder(this)
             showDialog.setMessage("Order Success!")
             showDialog.setPositiveButton("OK") { dialog, id ->
-                Toast.makeText(this, "Saving Data", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
