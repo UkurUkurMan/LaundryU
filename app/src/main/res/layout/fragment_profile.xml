@@ -194,6 +194,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="60dp"
                                 android:layout_weight="1"
+                                android:textColor="@color/black"
                                 android:fontFamily="@font/poppinsbold"
                                 android:text="Username :"
                                 android:textSize="18sp" />
@@ -203,6 +204,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:textColor="@color/black"
                                 android:fontFamily="@font/poppinsmedium"
                                 android:text=""
                                 android:textAlignment="viewEnd"
@@ -228,11 +230,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:textColor="@color/black"
                                 android:fontFamily="@font/poppinsbold"
                                 android:text="Gmail :"
                                 android:textSize="18sp" />
 
                             <TextView
+                                android:textColor="@color/black"
                                 android:id="@+id/p_email"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -244,18 +248,20 @@
 
                         </LinearLayout>
 
-
-
-                        <ImageView
+                        <Button
                             android:id="@+id/button_logout"
-                            android:layout_width="39dp"
-                            android:layout_height="42dp"
+                            android:layout_marginVertical="20dp"
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="15dp"
-                            android:clickable="true"
-                            android:src="@drawable/logout"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/kotak"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:text="Log Out"
+                            />
+
+
                     </LinearLayout>
 
 

@@ -47,7 +47,7 @@ class profile : Fragment() {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_profile, container, false)
         var nama : TextView = view.findViewById(R.id.p_user)
-        val logoutButton : ImageView = view.findViewById(R.id.button_logout)
+        val logoutButton : Button = view.findViewById(R.id.button_logout)
         if(user!=null){
             nama.text = user.displayName
         }
@@ -71,7 +71,7 @@ class profile : Fragment() {
                 loading.dismiss()
                 requireActivity().supportFragmentManager.popBackStack()
                 activity?.finish()
-            }, 5000)
+            }, 3000)
         }
         return view
     }
