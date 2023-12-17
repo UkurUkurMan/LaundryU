@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.laundryukurukur.adapter.ProsesAdapter
 import com.laundryukurukur.database.Order
 import com.laundryukurukur.database.OrderApp
@@ -95,7 +96,8 @@ class home : Fragment() {
         val btn2 : CardView = view.findViewById(R.id.idCuciBsh)
         val btn3 : CardView = view.findViewById(R.id.idCuciStr)
         val btn4 : CardView = view.findViewById(R.id.idSetrika)
-
+        val user = FirebaseAuth.getInstance().currentUser
+        textnama.text = "Welcome, "+user!!.displayName
         val bundle = Bundle()
         btn1.setOnClickListener{
             harga = 3000
