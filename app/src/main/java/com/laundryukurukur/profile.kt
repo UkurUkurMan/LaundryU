@@ -67,6 +67,7 @@ class profile : Fragment() {
             Handler(Looper.getMainLooper()).postDelayed({
                 // Start the next activity
                 val intent = Intent(requireContext(), login::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 loading.dismiss()
                 requireActivity().supportFragmentManager.popBackStack()

@@ -1,10 +1,20 @@
 package com.laundryukurukur
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import com.laundryukurukur.databinding.FragmentOrderCompleteBinding
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Date
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,7 +30,7 @@ class OrderComplete : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var binding: FragmentOrderCompleteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -33,8 +43,25 @@ class OrderComplete : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val textTanggal : TextView
+        binding = FragmentOrderCompleteBinding.inflate(inflater, container, false)
+        @SuppressLint("SimpleDateFormat")
+        val tanggal : DateFormat = SimpleDateFormat("EEEE, dd MMMM yyyy")
+        textTanggal = binding.textTanggalContain
+        textTanggal.text = tanggal.format(Date())
+        binding.btnDetail.setOnClickListener {
+            it.findNavController().navigate(R.id.action_orderComplete_to_orderNote)
+        }
+        binding.btnDashboard.setOnClickListener {
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            requireActivity().supportFragmentManager.popBackStack()
+            activity?.finish()
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order_complete, container, false)
+        return binding.root
     }
 
     companion object {
