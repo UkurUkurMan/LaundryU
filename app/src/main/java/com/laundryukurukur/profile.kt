@@ -4,6 +4,8 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,7 +47,7 @@ class profile : Fragment() {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_profile, container, false)
         var nama : TextView = view.findViewById(R.id.p_user)
-        val logoutButton : ImageView = view.findViewById(R.id.button_logout)
+        val logoutButton : Button = view.findViewById(R.id.button_logout)
         if(user!=null){
             nama.text = user.displayName
         }
@@ -55,15 +57,21 @@ class profile : Fragment() {
         }
 
         logoutButton.setOnClickListener {
-            progressDialog.show()
+            val loading = loadingDialog(requireContext())
+            loading.show()
+
+            // Lakukan logout
             firebaseAuth.signOut()
-            if (FirebaseAuth.getInstance().currentUser == null) {
-                progressDialog.dismiss()
+
+            // Pindah activity
+            Handler(Looper.getMainLooper()).postDelayed({
+                // Start the next activity
                 val intent = Intent(requireContext(), login::class.java)
                 startActivity(intent)
+                loading.dismiss()
                 requireActivity().supportFragmentManager.popBackStack()
                 activity?.finish()
-            }
+            }, 3000)
         }
         return view
     }

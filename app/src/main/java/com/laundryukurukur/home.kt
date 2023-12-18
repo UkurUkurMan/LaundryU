@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.laundryukurukur.adapter.ProsesAdapter
+import com.laundryukurukur.database.Order
 import com.laundryukurukur.database.OrderApp
 import com.laundryukurukur.database.OrderDao
 import com.laundryukurukur.databinding.ActivityMainBinding
@@ -41,10 +42,10 @@ class home : Fragment() {
     private var param2: String? = null
     private lateinit var binding : FragmentHomeBinding
 
-    private lateinit var prosesAdapter: ProsesAdapter
-    val list_proses: RecyclerView? = view?.findViewById(R.id.list_Proses)
+    lateinit var prosesAdapter: ProsesAdapter
+    lateinit var list_proses: RecyclerView
     private lateinit var dao: OrderDao
-    val firebaseAuth = FirebaseAuth.getInstance()
+
     var harga = 0
     var title = ""
 
@@ -57,8 +58,11 @@ class home : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
         dao = OrderApp.invoke(requireContext()).getOrderDao()
-        setRecycler()
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setRecycler()
     }
 
     override fun onStart() {
@@ -66,38 +70,34 @@ class home : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             val proses = dao.getAllOrder()
             Log.d("home", "dbResponse: $proses")
-            withContext(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
                 prosesAdapter.setData(proses)
             }
         }
-        setRecycler()
     }
 
     private fun setRecycler(){
+        val list_proses: RecyclerView? = view?.findViewById(R.id.list_Proses)
         prosesAdapter = ProsesAdapter(arrayListOf())
         list_proses?.apply {
-            layoutManager = LinearLayoutManager(requireActivity())
+            layoutManager = LinearLayoutManager(requireContext().applicationContext)
             adapter = prosesAdapter
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        setRecycler()
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
         val textnama : TextView = view.findViewById(R.id.welcome)
         val btn1 : CardView = view.findViewById(R.id.idCuciKrg)
         val btn2 : CardView = view.findViewById(R.id.idCuciBsh)
         val btn3 : CardView = view.findViewById(R.id.idCuciStr)
         val btn4 : CardView = view.findViewById(R.id.idSetrika)
-        val user = firebaseAuth.currentUser
-        if(user!=null){
-            textnama.text = "Welcome, " + user.displayName
-        }
+        val user = FirebaseAuth.getInstance().currentUser
+        textnama.text = "Welcome, "+user!!.displayName
         val bundle = Bundle()
         btn1.setOnClickListener{
             harga = 3000
@@ -155,6 +155,7 @@ class home : Fragment() {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
+                    setRecycler()
                 }
             }
     }
