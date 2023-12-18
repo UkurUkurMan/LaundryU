@@ -1,6 +1,7 @@
 package com.laundryukurukur
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import com.laundryukurukur.databinding.FragmentOrderCompleteBinding
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -27,7 +30,7 @@ class OrderComplete : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var binding: FragmentOrderCompleteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -40,16 +43,25 @@ class OrderComplete : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View =  inflater.inflate(R.layout.fragment_order_complete, container, false)
+
         val textTanggal : TextView
+        binding = FragmentOrderCompleteBinding.inflate(inflater, container, false)
         @SuppressLint("SimpleDateFormat")
         val tanggal : DateFormat = SimpleDateFormat("EEEE, dd MMMM yyyy")
-        textTanggal = view.findViewById(R.id.textTanggalContain)
+        textTanggal = binding.textTanggalContain
         textTanggal.text = tanggal.format(Date())
-        val btnDashboard : Button = view.findViewById(R.id.btnDashboard)
-        btnDashboard.setOnClickListener { Navigation.findNavController(view).navigate(R.id.action_orderComplete_to_orderNote) }
+        binding.btnDetail.setOnClickListener {
+            it.findNavController().navigate(R.id.action_orderComplete_to_orderNote)
+        }
+        binding.btnDashboard.setOnClickListener {
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            requireActivity().supportFragmentManager.popBackStack()
+            activity?.finish()
+        }
         // Inflate the layout for this fragment
-        return view
+        return binding.root
     }
 
     companion object {
