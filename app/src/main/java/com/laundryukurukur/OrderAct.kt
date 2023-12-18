@@ -19,6 +19,7 @@ import com.laundryukurukur.adapter.ProsesAdapter
 import com.laundryukurukur.database.Order
 import com.laundryukurukur.database.OrderApp
 import com.laundryukurukur.database.OrderDao
+import com.laundryukurukur.database.RiwayatApp
 import com.laundryukurukur.databinding.ActivityMainBinding
 import com.laundryukurukur.databinding.ActivityOrderBinding
 import kotlinx.coroutines.CoroutineScope
@@ -268,6 +269,9 @@ class OrderAct : AppCompatActivity() {
         val phoneField = findViewById<EditText>(R.id.edit_phone)
         CoroutineScope(Dispatchers.IO).launch {
             OrderApp(this@OrderAct).getOrderDao().addOrder(
+                Order (0, nameField.text.toString(), phoneField.text.toString(), kategori, paket, kuantitas, biaya)
+            )
+            RiwayatApp(this@OrderAct).getOrderDao().addOrder(
                 Order (0, nameField.text.toString(), phoneField.text.toString(), kategori, paket, kuantitas, biaya)
             )
         }

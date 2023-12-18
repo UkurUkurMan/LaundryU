@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -95,6 +96,7 @@ class home : Fragment() {
         val btn4 : CardView = view.findViewById(R.id.idSetrika)
 
         val bundle = Bundle()
+
         btn1.setOnClickListener{
             harga = 3000
             title = "Cuci Kering"
